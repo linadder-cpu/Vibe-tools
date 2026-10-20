@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯準會 (FED) 貨幣政策與物價因果關係觀測站</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>聯準會 (FED) 貨幣政策與物價因果關係觀測站</h1>
+        <p>探索美聯儲政策工具、官員言論如何穿透金融市場，最終影響實體經濟物價 (CPI) 的完整邏輯推導鏈結。</p>
+    </header>
+
+    <main>
+        <!-- 核心因果邏輯傳導鏈 -->
+        <section class="card">
+            <h2><span class="emoji">⛓️</span> 核心因果傳導路徑 (Transmission Mechanism)</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-badge">1</div>
+                    <div class="timeline-content">
+                        <h3>FED 政策宣告 / 鷹鴿言論</h3>
+                        <p><strong>觸發點：</strong>FOMC 利率決議（調升/調降基準利率）或主席與官員的<strong>前瞻性指引 (Forward Guidance)</strong> 釋放鷹派（緊縮）或鴿派（寬鬆）訊號。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-badge">2</div>
+                    <div class="timeline-content">
+                        <h3>金融市場即時反應</h3>
+                        <p><strong>市場預期機制：</strong>美債殖利率（特別是 2年期與 10年期）迅速攀升或回落，美元指數 (DXY) 隨之變動，股票等風險資產價格重新定價。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-badge">3</div>
+                    <div class="timeline-content">
+                        <h3>銀行與實體借貸成本</h3>
+                        <p><strong>資金流動性傳導：</strong>商業銀行調高或降低房屋貸款、汽車貸款及企業信用貸款利率。信貸條件隨之緊縮或放寬。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-badge">4</div>
+                    <div class="timeline-content">
+                        <h3>終端總體總需求變化</h3>
+                        <p><strong>經濟活動抑制/刺激：</strong>高利率壓抑企業資本支出 (CapEx) 與招募意願（勞動力市場降溫），同時降低消費者購買耐久財和大宗消費的慾望。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-badge">5</div>
+                    <div class="timeline-content">
+                        <h3>物價與通膨率 (CPI / PCE)</h3>
+                        <p><strong>因果終點：</strong>當總需求低於總供給，商品與服務提供商失去漲價能力，甚至降價求售，最終導致<strong>消費者物價指數 (CPI)</strong> 增幅放緩，達成控制通膨目標。（通常滯後 12-18 個月）</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 情境模擬互動器 -->
+        <section class="card">
+            <h2><span class="emoji">🎛️</span> 政策情境模擬器 (Scenario Simulator)</h2>
+            <p>選擇不同的聯準會政策走向，即時觀測經濟指標與物價的預期連鎖反應：</p>
+            
+            <div class="simulator-controls">
+                <button class="btn active" id="btn-hawk" onclick="switchScenario('hawk')">🦅 強烈鷹派 (升息/緊縮言論)</button>
+                <button class="btn" id="btn-dove" onclick="switchScenario('dove')">🕊️ 極度鴿派 (降息/寬鬆言論)</button>
+            </div>
+
+            <div class="matrix-container">
+                <table class="matrix-table">
+                    <thead>
+                        <tr>
+                            <th>傳導節點</th>
+                            <th>指標項目</th>
+                            <th>預期走勢 / 狀態</th>
+                            <th>邏輯說明</th>
+                        </tr>
+                    </thead>
+                    <tbody id="simulator-tbody">
+                        <!-- 由 JS 動態渲染 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 數據可視化區塊 -->
+        <section class="card">
+            <h2><span class="emoji">📊</span> 歷史數據交叉驗證 (聯邦基金利率 vs 核心 CPI)</h2>
+            <p>此圖表呈現基礎利率變動與物價指數走勢的歷史對照，可清晰觀察到利率頂峰與通膨拐點之間的<strong>時間滯後效應 (Lag Effect)</strong>。</p>
+            <div class="chart-container">
+                <canvas id="fedChart"></canvas>
+            </div>
+        </section>
+
+        <!-- 權威資料來源 -->
+        <section class="card">
+            <h2><span class="emoji">🔗</span> 權威數據與理論來源 (Data Sources)</h2>
+            <p>本專案推導邏輯與數據基礎皆引述自以下國際金融官方機構：</p>
+            <ul class="source-list">
+                <li>
+                    <strong>貨幣政策傳導機制理論：</strong> 
+                    參考 <a href="https://www.federalreserve.gov/monetarypolicy/transmission.htm" target="_blank" rel="noopener">聯準會官方說明 (Board of Governors of the Federal Reserve System)</a>。
+                </li>
+                <li>
+                    <strong>美國官方基準利率數據 (Effective Federal Funds Rate)：</strong> 
+                    串接與下載自 <a href="https://fred.stlouisfed.org/series/FEDFUNDS" target="_blank" rel="noopener">聖路易斯聯儲經濟資料庫 (FRED)</a>。
+                </li>
+                <li>
+                    <strong>美國消費者物價指數 (CPI-U)：</strong> 
+                    數據源自 <a href="https://www.bls.gov/cpi/" target="_blank" rel="noopener">美國勞工統計局 (U.S. Bureau of Labor Statistics)</a>。
+                </li>
+                <li>
+                    <strong>聯準會官員言論與會議紀錄 (FOMC Minutes)：</strong> 
+                    追蹤最新動態請至 <a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener">FOMC 歷年會議日程與紀錄</a>。
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 FED Policy & Price Impact Observation Lab. Open-sourced on GitHub.</p>
+    </footer>
+</body>
+</html>

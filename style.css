@@ -1,0 +1,250 @@
+:root {
+    --primary-color: #1a365d;
+    --secondary-color: #2b6cb0;
+    --accent-hawk: #c53030;
+    --accent-dove: #2f855a;
+    --bg-color: #f7fafc;
+    --card-bg: #ffffff;
+    --text-color: #2d3748;
+    --text-light: #718096;
+    --border-color: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+main {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+.card h2 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.emoji {
+    margin-right: 0.5rem;
+}
+
+/* 時間軸樣式 */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 3px solid var(--secondary-color);
+    margin-top: 1rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-badge {
+    position: absolute;
+    left: calc(-2rem - 14px);
+    top: 2px;
+    background-color: var(--secondary-color);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.timeline-content h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.25rem;
+    color: var(--primary-color);
+}
+
+.timeline-content p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+/* 模擬器樣式 */
+.simulator-controls {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.btn {
+    flex: 1;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#btn-hawk.active {
+    background-color: var(--accent-hawk);
+    color: white;
+    border-color: var(--accent-hawk);
+}
+
+#btn-dove.active {
+    background-color: var(--accent-dove);
+    color: white;
+    border-color: var(--accent-dove);
+}
+
+.matrix-container {
+    overflow-x: auto;
+}
+
+.matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.matrix-table th, .matrix-table td {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.matrix-table th {
+    background-color: #edf2f7;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.trend-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.trend-up {
+    background-color: #fed7d7;
+    color: #9b2c2c;
+}
+
+.trend-down {
+    background-color: #c6f6d5;
+    color: #22543d;
+}
+
+/* 圖表 */
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    margin-top: 1rem;
+}
+
+/* 資料來源列表 */
+.source-list {
+    list-style-type: none;
+    margin-top: 1rem;
+}
+
+.source-list li {
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.source-list li::before {
+    content: "•";
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+.source-list a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.source-list a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    border-top: 1px solid var(--border-color);
+    background-color: #edf2f7;
+}
+
+@media (max-width: 600px) {
+    .simulator-controls {
+        flex-direction: column;
+    }
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
